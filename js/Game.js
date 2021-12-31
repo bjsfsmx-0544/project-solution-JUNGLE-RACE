@@ -30,18 +30,18 @@ class Game {
 
     animals = [ animal1,  animal2];
 
-    // C38 TA
+    // C38 AM
     bush = new Group();
    grass = new Group();
 
-    // Adding fuel sprite in the game
+    // Agregando sprites de arbustos en el juego
     this.addSprites(bush, 4, bushImage, 0.02);
 
-    // Adding coin sprite in the game
+    // Agregando sprites de pasto en el juego
     this.addSprites(grass, 18, grassImage, 0.09);
   }
 
-  // C38 TA
+  // C38 AM
   addSprites(spriteGroup, numberOfSprites, spriteImage, scale) {
     for (var i = 0; i < numberOfSprites; i++) {
       var x, y;
@@ -71,20 +71,20 @@ class Game {
     if (allPlayers !== undefined) {
       image(track, 0, -height * 5, width, height * 6);
 
-      //index of the array
+      // Indice del arreglo
       var index = 0;
       for (var plr in allPlayers) {
-        //add 1 to the index for every loop
+        // Agrega 1 al índice en cada ciclo
         index = index + 1;
 
-        //use data form the database to display the cars in x and y direction
+        // Usa datos de la base de datos para mostrar los autos en dirección x e y
         var x = allPlayers[plr].positionX;
         var y = height - allPlayers[plr].positionY;
 
         animals[index - 1].position.x = x;
         animals[index - 1].position.y = y;
 
-        // C38  SA
+        // C38  AA
         if (index === player.index) {
           stroke(10);
           fill("red");
@@ -93,11 +93,11 @@ class Game {
           this.handleBush(index);
           this.handleGrass(index);
 
-          // Changing camera position in y direction
+          // Cambiar posición de la cámara en la dirección y
          }
       }
 
-      // handling keyboard events
+      // Manipulación de eventos de teclado
       if (keyIsDown(UP_ARROW)) {
         player.positionY += 10;
         player.update();
@@ -108,11 +108,11 @@ class Game {
   }
 
   handleBush(index) {
-    // Adding fuel
+    // Agregando arbustos
     animals[index - 1].overlap(bush, function(collector, collected) {
       player.bush = 185;
-      //collected is the sprite in the group collectibles that triggered
-      //the event
+      // "collected" es el sprite en el grupo de coleccionables que detona
+      // el evento
       collected.remove();
     });
   }
@@ -121,8 +121,8 @@ class Game {
     animals[index - 1].overlap(grass, function(collector, collected) {
       player.score += 21;
       player.update();
-      //collected is the sprite in the group collectibles that triggered
-      //the event
+      // "collected" es el sprite en el grupo de coleccionables que detona
+      // el evento
       collected.remove();
     });
   }

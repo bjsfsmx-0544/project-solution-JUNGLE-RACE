@@ -1,8 +1,8 @@
 class Form {
   constructor() {
-    this.input = createInput("").attribute("placeholder", "Enter your name");
-    this.playButton = createButton("Play");
-    this.titleImg = createImg("./assets/title.png", "game title");
+    this.input = createInput("").attribute("placeholder", "Introduce tu nombre");
+    this.playButton = createButton("Jugar");
+    this.titleImg = createImg("./assets/title.png", "título del juego");
     this.greeting = createElement("h2");
   }
 
@@ -39,9 +39,9 @@ class Form {
       playerCount += 1;
       player.name = this.input.value();
       player.index = playerCount;
-    player.addPlayer();//aa
+    player.addPlayer();//aaa
       player.updateCount(playerCount); // BP
-     player.getDistance(); //aa
+     player.getDistance(); //aaa
     });
   }
 
